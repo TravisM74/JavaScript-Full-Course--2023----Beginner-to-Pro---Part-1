@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Functions</title>
+</head>
+<body>
+    <script>
+        /*
+        function greeting(){
+            console.log('hello');
+        }
+        greeting();
+
+        const num = 2;
+        // the function name is not needed as the function can be called with function()
+        //this function is now an anonymous function as it dose not have a name.
+        const function1 = function (){
+            console.log('hello2');
+        };
+        console.log(function1);
+        console.log(typeof function1);
+        function1();
+
+        /* Hoisting allows a function to be called before it has been created in the order of presidance.
+        this cannot be done if the function is created inside a variable.
+
+        in java scrip functions are values and just like any other value they can be saved in a variable.
+        */
+        /*
+        const object1 ={
+            num:2,
+            fun: function (){
+                console.log('hello3');
+            }
+        };
+
+        object1.fun();
+// passing a value into a function
+        function display(param){
+            console.log(param);
+        };
+        display(2);
+// passing a function into another function.
+        function run(param){
+            param();
+        }
+// this function is called a 'callback function' or callback.
+        run(function(){
+            console.log('hello4');
+        });
+        */
+       /*
+// set timeout takes 2 parameters a function and a value in milliseconds
+        setTimeout(function(){
+            console.log('timeout');
+            console.log('timeout2');
+        },3000);
+//asynchronous code - wont wait for line to finish before moving on to the next line
+        console.log('next line');
+//Syncronous code- will wait for the line to finish before moving onto the next line of code.
+
+        setInterval(function(){
+            console.log('interval');
+        },3000);
+        console.log('next line2');
+
+        */
+        ['make dinner',
+        'Wash Dishes',
+        'Watch youTube'
+        ].forEach(function (value,index){
+            if(value === 'Wash Dishes'){
+// a return dose the same thing as a continue in a for loop. ie skips to the next one.
+                return;
+            }
+            console.log(index);
+            console.log(value);
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>calculator</title>
+
+</head>
+<body>
+    <p class="js-outputDisplay"></p>
+    <button onclick="
+       updateCalculation(1);
+        ">1</button>
+    <button onclick="
+        updateCalculation(2);
+    ">2</button>
+    <button onclick="
+        updateCalculation(3);
+    ">3</button>
+    <button onclick="
+        updateCalculation('+');
+    ">+</button>
+     <p>
+        <button onclick="
+            updateCalculation(4);
+        ">4</button>
+        <button onclick="
+            updateCalculation(5);
+        ">5</button>
+        <button onclick="
+            updateCalculation(6);
+        ">6</button>
+        <!-- -->
+        <button onclick="
+        updateCalculation('-');
+        ">-</button>
+       
+    
+    </p>
+    <p>
+        <button onclick="
+            updateCalculation(7);
+        ">7</button>
+        <button onclick="
+            updateCalculation(8);
+        ">8</button>
+        <button onclick="
+            updateCalculation(9);
+        ">9</button>
+    </p>
+    <button onclick="
+            updateCalculation(0);
+        ">0</button>
+    <button onclick="
+        //console.log(eval(calculation));
+        outputDisplayElement.innerHTML = eval(calculation);
+        calculation = '';
+        ">=</button>
+    <script>
+        let calculation = localStorage.getItem('calc') ||  '';
+        const outputDisplayElement = document.querySelector('.js-outputDisplay');
+        outputDisplayElement.innerHTML = calculation;
+        function updateCalculation(value){
+            calculation += value;
+            //console.log(calculation);
+            outputDisplayElement.innerHTML = calculation;
+            localStorage.setItem('calc',calculation)
+            
+        };
+
+    </script>
+</body>
+
+</html>

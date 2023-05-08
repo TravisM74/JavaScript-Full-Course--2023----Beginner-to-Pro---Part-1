@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<button onclick="
+    playGame('heads');
+    ">heads</button>
+
+<button onclick="
+    playGame('tails');
+">tails</button>
+<p class="js-result-output"></p>
+<p class="js-statisticsDisplay"></p>
+<p>
+    <button onclick="
+        score.win = 0;
+        score.lose = 0;
+        score.head = 0;
+        score.tail = 0;
+        //console.log('All righty the scores have been cleared.');
+        resultElement.innerHTML = 'All righty the scores have been cleared.';
+        statisticsDisplayElement.innerHTML = '';
+        ">Reset Score</button>
+</p>
+
+    <Script>
+        let resultElement = document.querySelector('.js-result-output');
+        let statisticsDisplayElement = document.querySelector('.js-statisticsDisplay');
+        const score= JSON.parse(localStorage.getItem('score')) || {
+            win: 0,
+            lose:0,
+            head:0,
+            tail:0
+        }
+
+        function playGame(guess){
+            let coin = '';
+            const flip=Math.random();
+            if (flip > .5){
+                coin = 'heads';
+                score.head++;
+            } else {
+                coin = 'tails'
+                score.tail++;
+            }
+            if (coin === guess){
+                score.win++;
+                //console.log(`You called it ${coin} it is , great guess`);
+                resultElement.innerHTML = `You called it ${coin} it is , great guess`;
+            } else {
+                score.lose++
+                //console.log(`Awww to bad it was ${coin}`);
+                resultElement.innerHTML =`Awww to bad it was ${coin}`
+            }
+            statisticsDisplayElement.innerHTML =`thats ${score.win} right, and ${score.lose} wrong your at ${(score.win/score.lose)*100} % \nthats ${score.head} heads and ${score.tail} tails have shown`;
+            //console.log(`thats ${score.win} right, and ${score.lose} wrong your at ${(score.win/score.lose)*100} %`);
+            //console.log(`${score.head} heads and ${score.tail} tails have landed`);
+            localStorage.setItem('score',JSON.stringify(score));
+        };
+    </Script>
+</body>
+</html>

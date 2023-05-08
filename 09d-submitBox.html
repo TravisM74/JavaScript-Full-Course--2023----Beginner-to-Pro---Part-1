@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title >SubmitBox</title>
+</head>
+<body>
+    <input class="js-inputText" onkeydown="
+        onEnterExecute(event)">
+    
+    <button class="js-submitButton" onclick="
+    getTextFromInputText();
+    ">Submit</button>
+    
+    <P class="js-outputText"></P>
+    
+    <script>
+        const inputTextElement = document.querySelector('.js-inputText')
+        const outputText = document.querySelector('.js-outputText');
+        function onEnterExecute(event){
+            if(event.key === 'Enter'){
+                getTextFromInputText();
+            };
+        };
+        function getTextFromInputText(){
+            const inputText = inputTextElement.value;
+            console.log(inputText);
+            outputText.innerHTML = `Your name is ${inputText}.`;
+        }
+
+    </script>
+</body>
+</html>

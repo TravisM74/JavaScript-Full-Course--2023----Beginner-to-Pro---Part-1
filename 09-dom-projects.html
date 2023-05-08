@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dom Projects</title>
+</head>
+<body>
+    <p>YouTube subscribe button</p>
+    <button onclick="
+    subscribe()
+    " class="js-subscribe-button">Subscribe</button>
+
+    <P>Amazon Shipping Calculator</P>
+    <p>Orders under $40 = + $10 shipping.</p>
+    <P>Orders over $40 = FREE shipping</P>
+    <P><input placeholder="Cost of order" class="js-cost-input" onkeydown="
+        handleCostKeyDown(event);
+        "><button onclick="
+        calculateTotal();
+    ">Calculate</button></P>
+    <p class="js-total-cost"></p>
+
+
+    <script>
+        function handleCostKeyDown(event){
+            if (event.key === 'Enter'){
+                calculateTotal();
+            };
+        };
+
+        function calculateTotal(){
+            const inputElement = document.querySelector('.js-cost-input');
+// data taken from the DOM is in String format and needs to be converted with Number() to do calculations.
+            let cost = Number(inputElement.value);
+
+            if(cost < 40){
+                cost = cost + 10};
+            document.querySelector('.js-total-cost')
+                .innerHTML = `$${cost}`;
+        };
+        function subscribe(){
+            const buttonElement =document.querySelector('.js-subscribe-button');
+        if (buttonElement.innerText === 'Subscribe'){
+            buttonElement.innerHTML = 'Subscribed';
+        } else {
+            buttonElement.innerHTML = 'Subscribe';
+        }        
+        }
+    </script>
+</body>
+</html>

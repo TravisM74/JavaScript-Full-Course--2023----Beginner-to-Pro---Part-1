@@ -1,0 +1,22 @@
+body{
+    background-color:black;
+}
+.number-button{
+    background-color: grey;
+    font-size:20px;
+    border-radius:30px;
+    color:white;
+    padding: 20px;
+}
+.function-button{
+    background-color: orange;
+    color:white;
+    font-size:20px;
+    border-radius:30px;
+    padding: 20px;
+}
+.output-display{
+    background-color: transparent;
+    font-size:50px;
+    color:white;
+}

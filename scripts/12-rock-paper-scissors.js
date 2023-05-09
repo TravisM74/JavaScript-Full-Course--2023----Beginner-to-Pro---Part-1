@@ -86,15 +86,16 @@
       };
       function updateScoreElement(){
         document.querySelector('.js-score')
-          .innerHTML = `Wins: ${score.wins} ,Losses: ${score.loses}, Ties: ${score.ties}`;
-         
+        .innerHTML = `Wins: ${score.wins} ,Losses: ${score.loses}, Ties: ${score.ties}`;
+        
       };
       let isAutoPlaying = false;
       let intervalId;
-
+      
+      
       function autoPlay(){
         if (!isAutoPlaying){
-            intervalId = setInterval(function(){
+          intervalId = setInterval(() => {
             const playerMove = pickComputerMove();
             playGame(playerMove);
           },1000);
@@ -102,9 +103,60 @@
         } else{
             clearInterval(intervalId);
             isAutoPlaying = false;
+          };
         };
-      };
+        /*
+        using EventListeners in jscript is perfered to using onclick="" in the html
+        
+        add a class to the button,
+        document it into the jscript
+        add an event listener .addEventrListener( event, function)
+        use the 'click' for on click and an ananomys function to call your function event.
+        */
+        document.querySelector('.js-auto-play-button')
+          .addEventListener('click',() => {
+            autoPlay()
+          });
+        
+      document.querySelector('.js-rock-button')
+        .addEventListener('click',() => {
+          playGame('rock');
+        });
   
+      document.querySelector('.js-paper-button')
+        .addEventListener('click',() =>{
+          playGame('paper');
+        });
+    
+      document.querySelector('.js-scissors-button')
+        .addEventListener('click',() => {
+          playGame('scissors');
+        });
+
+      document.querySelector('.js-reset-button')
+        .addEventListener('click',() => {
+          score.wins = 0;
+          score.loses = 0;
+          score.ties = 0;
+          localStorage.removeItem('score');
+          updateScoreElement();
+        });
+//adding an Event listener to the body for any keyPresses
+      document.body.addEventListener('keydown',(event) =>{
+        if(event.key === 'r'){
+          playGame('rock');
+        }
+        if(event.key === 'p'){
+          playGame('paper');
+        }
+        if(event.key === 's'){
+          playGame('scissors');
+        }
+        if(event.key === 'a'){
+          autoPlay();
+        }
+      });
+
       function pickComputerMove(){
         let computerMove = '';
         randomNumber = Math.random();
@@ -118,4 +170,3 @@
         console.log(computerMove);
         return computerMove;
       }
-     
